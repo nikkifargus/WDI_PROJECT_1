@@ -1,3 +1,14 @@
-body{
-  background: red;
+/*main {
+  width: 50%;
+  height: 100vh;
+  background-color: blue;
+  margin-left: 25%;
+  margin-right: 25%;
+}*/
+
+
+.rocket {
+width: 10%;
+position: absolute;
+
 }
