@@ -1,13 +1,17 @@
-/*main {
-  width: 50%;
-  height: 100vh;
-  background-color: blue;
-  margin-left: 25%;
-  margin-right: 25%;
-}*/
+main {
+background-color: black;
+}
 
 
 .rocket {
   width: 50px;;
   position: absolute;
+}
+
+body {
+  /*margin-left: 25%;
+  margin-right: 25%;*/
+  width: 500px;
+  height: 100vh;
+  /*text-align: center;*/
 }

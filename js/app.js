@@ -12,10 +12,6 @@ var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
 canvas.width = 500;
 canvas.height = window.innerHeight;
-ctx.fillStyle = 'black';
-ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-
 
 //create a new object every 400ms
 var starCreate = 300;
@@ -29,27 +25,12 @@ var lastStar = -1;
 //an array to hold all of the created stars
 var objects = [];
 
-// var img = new Image();
-// img.src = 'js/star.png';
-
 animate();
 
 //create new object
 function CreateRandomstar() {
 
-  //select a random type for this new object (can use later to color objects)
-  // var t = 'red';
-  //
-  // if(Math.random() < 0.5){
-  //   t ='red';
-  // } else {
-  //   t='blue';
-  // }
-
   var object = {
-    //set this object type
-    // type: t,
-    //set x randomly but at least 10px off the canvas edges
     x: Math.random() * (canvas.width -20) + 10,
     //set y to start at top of page
     y: 0
@@ -78,7 +59,6 @@ function animate(){
   //draw the line where the new stars are created
   ctx.beginPath();
   ctx.moveTo(0, 0);
-  // ctx.lineTo(canvas.width, starLineY);
   ctx.stroke();
 
   //add style and move each object down the canvas
@@ -87,11 +67,7 @@ function animate(){
     object.y += starFall;
     ctx.fillStyle = 'red';
     ctx.fillRect(object.x, object.y, 5, 5);
-    // ctx.beginPath();
-    // ctx.arc(object.x, object.y, 8, 0, Math.PI*2, false);
-    // ctx.closePath();
-    // ctx.fillStyle = object.type;
-    // ctx.fill();
+
   }
 }
 
