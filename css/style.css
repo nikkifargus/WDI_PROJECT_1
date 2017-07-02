@@ -11,18 +11,3 @@
   width: 50px;;
   position: absolute;
 }
-
-/*main{
-  width: 50%;
-  height: 100vh;
-  margin-left: 25%;
-  margin-right: 25%;
-}*/
-
-#canvas{
-  width: 50%;
-  height: 100vh;
-  margin-left: 25%;
-  margin-right: 25%;
-  background-color: black;
-}

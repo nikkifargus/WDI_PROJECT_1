@@ -10,6 +10,12 @@
 
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
+canvas.width = 500;
+canvas.height = window.innerHeight;
+ctx.fillStyle = 'black';
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+
 
 //create a new object every 400ms
 var starCreate = 300;
