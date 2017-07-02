@@ -13,7 +13,7 @@ var ctx = canvas.getContext('2d');
 canvas.width = 500;
 canvas.height = window.innerHeight;
 
-//create a new object every 400ms
+//create a new object every 300ms
 var starCreate = 300;
 
 //how fast stars will fall
@@ -55,11 +55,6 @@ function animate(){
 
   //clear the canvas so all objects can be redrawn
   ctx.clearRect(0,0, canvas.width, canvas.height);
-
-  //draw the line where the new stars are created
-  ctx.beginPath();
-  ctx.moveTo(0, 0);
-  ctx.stroke();
 
   //add style and move each object down the canvas
   for (var i = 0; i < objects.length; i++) {
