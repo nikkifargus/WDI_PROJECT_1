@@ -9,41 +9,55 @@
 
 
 var canvas = document.getElementById('canvas');
-canvas.width = window.innerWidth;
+canvas.width = 500;
 canvas.height = window.innerHeight;
 var context = canvas.getContext('2d');
 var img = new Image();
 img.src = 'js/star.png';
 var noOfStars = 20;
 var stars = [];
+
 for (var i= 0; i < noOfStars; i++){
   var x = Math.floor(Math.random()*canvas.width);
   var y = Math.floor(Math.random()*canvas.height);
   stars[i] = new star(x,y);
 }
 
-
-
 function star(x,y) {
   this.x = x;
   this.y = y;
 
+  this.fall = function(){
+    this.y = this.y+4;
+    if(this.y> canvas.height){
+      this.y = 0;
+    }
+  };
+
   this.show = function(){
-    context.drawImage(img,this.x, this.y, 15,15);
+    context.drawImage(img,this.x, this.y, 25,25);
 
   };
 }
+
 function draw() {
   context.fillStyle = 'black';
   context.fillRect(0,0, canvas.width, canvas.height);
   for (var i = 0; i < noOfStars; i++) {
     stars[i].show();
+    stars[i].fall();
   }
 }
 
 function update(){
   draw();
   window.requestAnimationFrame(update);
+  $(document).mousemove(function(e) {
+    $('#cursor').offset({
+      left: e.pageX,
+      top: e.pageY + 20
+    });
+  });
 }
 
 update();
