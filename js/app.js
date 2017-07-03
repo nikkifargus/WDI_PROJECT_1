@@ -8,10 +8,10 @@
 // if star hits rocket, rocket explodes
 
 //create a new object every 300ms
-var starCreate = 100;
+var starCreate = 400;
 
 //how fast stars will fall
-var starFall = 4;
+var starFall = 1;
 
 //when last star created
 var lastStar = -1;
@@ -19,7 +19,6 @@ var lastStar = -1;
 //an array to hold all of the created stars
 var objects = [];
 
-var rocket = '.rocket';
 
 var side = 225;
 
@@ -50,18 +49,18 @@ function CreateRandomstar() {
 function animate(){
 
   animateStar();
-  moveRocket();
-  // detectCollision();
+  // moveRocket();
+  detectCollision();
 
-  function moveRocket(){
-    $('main').mouseenter(function(){
-      ctx.fillStyle = 'gray';
-      ctx.fillRect(20, 20, 50, 50);
-      $(document).mousemove(function(e){
-        $(rocket).css({left: e.pageX, top: e.pageY});
-      });
-    });
-  }
+  // function moveRocket(){
+  //   $('main').mouseenter(function(){
+  //     ctx.fillStyle = 'gray';
+  //     ctx.fillRect(20, 20, 50, 50);
+  //     $(document).mousemove(function(e){
+  //       $(rocket).css({left: e.pageX, top: e.pageY});
+  //     });
+  //   });
+  // }
 
   function animateStar (){
     // used to get the elapsed time
@@ -93,41 +92,40 @@ function animate(){
       ctx.stroke();
 
       //create spaceship
+      var spaceship =
       ctx.beginPath();
       ctx.arc(side, up, 14, 0, 2*Math.PI);
       ctx.fillStyle = 'red';
       ctx.fill();
       ctx.stroke();
 
+
     }
   }
 
-  // function detectCollision(objects){
-  //   for (var i = 0; i < objects.length; i++) {
-  //     var o = objects[i];
-  //     if(rocket.x + rocket.width >= o.x && rocket.x <= o.x + o.width && rocket.y >= o.y && rocket.y <= o.y + o.height ){
-  //       console.log('hit');
-  //     }
-  //   }
-  // }
+  function detectCollision(){
+
+  }
+  
+
 }
 
 window.onload = function(){
   animate();
   $('.up').on('click', function(){
-    console.log('clicked up');
+    // console.log('clicked up');
     up = up - 10;
   });
   $('.down').on('click', function(){
-    console.log('clicked down');
+    // console.log('clicked down');
     up = up + 10;
   });
   $('.left').on('click', function(){
-    console.log('clicked left');
+    // console.log('clicked left');
     side = side - 10;
   });
   $('.right').on('click', function(){
-    console.log('clicked right');
+    // console.log('clicked right');
     side = side + 10;
   });
 };
