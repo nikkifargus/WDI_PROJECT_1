@@ -21,6 +21,10 @@ var objects = [];
 
 var rocket = '.rocket';
 
+var side = 225;
+
+var up = 200;
+
 
 
 
@@ -87,6 +91,14 @@ function animate(){
       ctx.fillStyle = grd;
       ctx.fill();
       ctx.stroke();
+
+      //create spaceship
+      ctx.beginPath();
+      ctx.arc(side, up, 14, 0, 2*Math.PI);
+      ctx.fillStyle = 'red';
+      ctx.fill();
+      ctx.stroke();
+
     }
   }
 
@@ -102,6 +114,9 @@ function animate(){
 
 window.onload = function(){
   animate();
+  $('.up').on('click', function(){
+    up++;
+  });
 };
 
 
