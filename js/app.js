@@ -51,7 +51,7 @@ function animate(){
 
   animateStar();
   moveRocket();
-  detectCollision();
+  // detectCollision();
 
   function moveRocket(){
     $('main').mouseenter(function(){
@@ -102,20 +102,33 @@ function animate(){
     }
   }
 
-  function detectCollision(objects){
-    for (var i = 0; i < objects.length; i++) {
-      var o = objects[i];
-      if(rocket.x + rocket.width >= o.x && rocket.x <= o.x + o.width && rocket.y >= o.y && rocket.y <= o.y + o.height ){
-        console.log('hit');
-      }
-    }
-  }
+  // function detectCollision(objects){
+  //   for (var i = 0; i < objects.length; i++) {
+  //     var o = objects[i];
+  //     if(rocket.x + rocket.width >= o.x && rocket.x <= o.x + o.width && rocket.y >= o.y && rocket.y <= o.y + o.height ){
+  //       console.log('hit');
+  //     }
+  //   }
+  // }
 }
 
 window.onload = function(){
   animate();
   $('.up').on('click', function(){
-    up++;
+    console.log('clicked up');
+    up = up - 10;
+  });
+  $('.down').on('click', function(){
+    console.log('clicked down');
+    up = up + 10;
+  });
+  $('.left').on('click', function(){
+    console.log('clicked left');
+    side = side - 10;
+  });
+  $('.right').on('click', function(){
+    console.log('clicked right');
+    side = side + 10;
   });
 };
 
