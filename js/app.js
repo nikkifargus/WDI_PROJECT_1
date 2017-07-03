@@ -19,13 +19,13 @@ var lastStar = -1;
 //an array to hold all of the created stars
 var objects = [];
 
-
 var side = 225;
 
 var up = 200;
 
-
-
+// var starRadius = 7;
+//
+// var rocketRadius = 14;
 
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
@@ -33,82 +33,82 @@ var ctx = canvas.getContext('2d');
 canvas.width = 500;
 canvas.height = window.innerHeight;
 
-//create new object
+//create new object at a random x location to be styled and animated.
 function CreateRandomstar() {
-
   var object = {
     x: Math.random() * (canvas.width -20) + 10,
-    //set y to start at top of page
     y: 0
   };
-
-  // add the new object to the objects[] array
   objects.push(object);
 }
 
 function animate(){
-
   animateStar();
-  // moveRocket();
-  detectCollision();
-
-  // function moveRocket(){
-  //   $('main').mouseenter(function(){
-  //     ctx.fillStyle = 'gray';
-  //     ctx.fillRect(20, 20, 50, 50);
-  //     $(document).mousemove(function(e){
-  //       $(rocket).css({left: e.pageX, top: e.pageY});
-  //     });
-  //   });
-  // }
-
-  function animateStar (){
-    // used to get the elapsed time
-    var time = Date.now();
-
-    //see if its time to create a new star
-    if (time> (lastStar + starCreate)){
-      lastStar = time;
-      CreateRandomstar();
-    }
-
-    //request another animation frame  (used instead of set interval)
-    requestAnimationFrame(animate);
-
-    //clear the canvas so all objects can be redrawn
-    ctx.clearRect(0,0, canvas.width, canvas.height);
-
-    //add size & color and move each object down the canvas
-    for (var i = 0; i < objects.length; i++) {
-      var object = objects[i];
-      object.y += starFall;
-      ctx.beginPath();
-      ctx.arc(object.x, object.y, 7, 0,2*Math.PI);
-      var grd=ctx.createRadialGradient(75,50,5,90,60,500);
-      grd.addColorStop(0,'gold');
-      grd.addColorStop(1,'white');
-      ctx.fillStyle = grd;
-      ctx.fill();
-      ctx.stroke();
-
-      //create spaceship
-      var spaceship =
-      ctx.beginPath();
-      ctx.arc(side, up, 14, 0, 2*Math.PI);
-      ctx.fillStyle = 'red';
-      ctx.fill();
-      ctx.stroke();
-
-
-    }
-  }
-
-  function detectCollision(){
-
-  }
-  
-
 }
+// moveRocket();
+// detectCollision('object[i]');
+
+function animateStar (){
+  // used to get the elapsed time
+  var time = Date.now();
+
+  //see if its time to create a new star
+  if (time> (lastStar + starCreate)){
+    lastStar = time;
+    CreateRandomstar();
+  }
+
+  //request another animation frame  (used instead of set interval)
+  requestAnimationFrame(animate);
+
+  //clear the canvas so all objects can be redrawn
+  ctx.clearRect(0,0, canvas.width, canvas.height);
+
+  //add size & color and move each object down the canvas
+  for (var i = 0; i < objects.length; i++) {
+    var object = objects[i];
+    object.y += starFall;
+    ctx.fillStyle ='gold';
+    ctx.fillRect(object.x, object.y, 10, 10);
+    // ctx.beginPath();
+    // ctx.arc(object.x, object.y, starRadius, 0, 2*Math.PI);
+    // ctx.fillStyle = 'gold';
+    // ctx.fill();
+    // ctx.stroke();
+
+    // create spaceship
+    // var spaceShip =
+    // ctx.beginPath();
+    // ctx.arc(side, up, rocketRadius, 0, 2*Math.PI);
+    // ctx.fillStyle = 'red';
+    // ctx.fill();
+    // ctx.stroke();
+    ctx.fillStyle ='red';
+    ctx.fillRect(side, up, 20, 20);
+  }
+
+  // hitDetect();
+  //
+  // function hitDetect(m, mi){
+  //   for (var i = 0; i < objects.length; i++) {
+  //     var e = spaceShip;
+  //     if(m.x+m.w >=e.x && m.x<=e.x+e.w && m.y >= e.y &&m.y <=e.y+e.h){
+  //       this.objects.splice(this.object[mi],1);
+  //       console.log('hit');
+  //     }
+  //   }
+  // }
+  // function detectCollision(other){
+  //   var d = dist(spaceShip.x, spaceShip.y, other.x, other.y);
+  //   if (d < rocketRadius + starRadius){
+  //     return true;
+  //   }else{
+  //     return false;
+  //   }
+  // }
+}
+
+
 
 window.onload = function(){
   animate();
@@ -131,16 +131,19 @@ window.onload = function(){
 };
 
 
-
-
-ctx.fillStyle ='green';
-// ctx.fillRect(225, 50, 50, 50);
-
-
-
 // $(document).mousemove(function(e){
 //   $('#cursor').css({left: e.pageX, top: e.pageY});
 // });
 
 //hide original cursor when enter canvas
 // canvas.style.cursor = 'none';
+
+// function moveRocket(){
+//   $('main').mouseenter(function(){
+//     ctx.fillStyle = 'gray';
+//     ctx.fillRect(20, 20, 50, 50);
+//     $(document).mousemove(function(e){
+//       $(rocket).css({left: e.pageX, top: e.pageY});
+//     });
+//   });
+// }
