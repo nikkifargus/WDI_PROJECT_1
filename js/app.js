@@ -8,16 +8,16 @@
 // if star hits rocket, rocket explodes
 
 
-var canvas = document.getElementById('canvas');
-var ctx = canvas.getContext('2d');
-canvas.width = 500;
-canvas.height = window.innerHeight;
+
+
+//hide original cursor when enter canvas
+// canvas.style.cursor = 'none';
 
 //create a new object every 300ms
-var starCreate = 300;
+var starCreate = 100;
 
 //how fast stars will fall
-var starFall = 1;
+var starFall = 4;
 
 //when last star created
 var lastStar = -1;
@@ -25,7 +25,14 @@ var lastStar = -1;
 //an array to hold all of the created stars
 var objects = [];
 
-animate();
+
+
+
+var canvas = document.getElementById('canvas');
+var ctx = canvas.getContext('2d');
+//set size of the canvas
+canvas.width = 500;
+canvas.height = window.innerHeight;
 
 //create new object
 function CreateRandomstar() {
@@ -41,6 +48,11 @@ function CreateRandomstar() {
 }
 
 function animate(){
+
+  // $('main').mouseenter(function(){
+  //   ctx.fillStyle ='green';
+  //   ctx.fillRect(225, 500, 100, 100);
+  // });
   //get the elapsed time
   var time = Date.now();
 
@@ -50,73 +62,39 @@ function animate(){
     CreateRandomstar();
   }
 
-  //request another animation frame
+  //request another animation frame  (used instead of set interval)
   requestAnimationFrame(animate);
 
   //clear the canvas so all objects can be redrawn
   ctx.clearRect(0,0, canvas.width, canvas.height);
 
-  //add style and move each object down the canvas
+  //add size & color and move each object down the canvas
   for (var i = 0; i < objects.length; i++) {
     var object = objects[i];
     object.y += starFall;
     ctx.fillStyle = 'red';
-    ctx.fillRect(object.x, object.y, 5, 5);
+    ctx.fillRect(object.x, object.y, 10, 10);
 
   }
 }
 
-// var canvas = document.getElementById('canvas');
-// canvas.width = 500;
-// canvas.height = window.innerHeight;
-// var context = canvas.getContext('2d');
-// var img = new Image();
-// img.src = 'js/star.png';
-// var noOfStars = 20;
-// var stars = [];
-//
-// for (var i= 0; i < noOfStars; i++){
-//   var x = Math.floor(Math.random()*canvas.width);
-//   var y = Math.floor(Math.random()*canvas.height);
-//   stars[i] = new star(x,y);
-// }
-//
-// function star(x,y) {
-//   this.x = x;
-//   this.y = y;
-//
-//   this.fall = function(){
-//     this.y = this.y+4;
-//     if(this.y> canvas.height){
-//       this.y = 0;
-//     }
-//   };
-//
-//   this.show = function(){
-//     context.drawImage(img,this.x, this.y, 25,25);
-//
-//   };
-// }
-//
-// function draw() {
-//   context.fillStyle = 'black';
-//   context.fillRect(0,0, canvas.width, canvas.height);
-//   for (var i = 0; i < noOfStars; i++) {
-//     stars[i].show();
-//     stars[i].fall();
-//   }
-// }
-//
-// function update(){
-//   draw();
-//   window.requestAnimationFrame(update);
-//   $(document).mousemove(function(e) {
-//     $('#cursor').offset({
-//       left: e.pageX,
-//       top: e.pageY + 20
-//     });
-//   });
-// }
-//
-// update();
-//
+window.onload = function(){
+  animate();
+  $('main').mouseenter(function(){
+    $(document).mousemove(function(e){
+      $('.rocket').css({left: e.pageX, top: e.pageY});
+    });
+  });
+};
+
+
+
+
+ctx.fillStyle ='green';
+// ctx.fillRect(225, 50, 50, 50);
+
+
+
+// $(document).mousemove(function(e){
+//   $('#cursor').css({left: e.pageX, top: e.pageY});
+// });
