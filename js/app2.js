@@ -62,8 +62,9 @@ function animateStar() {
   },
     {
       duration: 2000,
-      step: function(now, fx){
-        console.log();
+      step: function(){
+        var starPos = this.getBoundingClientRect();
+        console.log(starPos);
       }
     });
 }
