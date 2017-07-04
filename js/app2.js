@@ -63,18 +63,32 @@ function animateStar() {
   // move star down the page
   // 400px;
   $('.star').animate({
-    top: '+500'
+    top: '+505'
   },
     {
       duration: 2000,
       step: function(){
         var starPos = this.getBoundingClientRect();
         var rocketPos =  document.getElementsByClassName('rocket')[0].getBoundingClientRect();
-        console.log(`******** STAR ${starPos.top}`);
-        console.log(`******** ROCKET ${rocketPos.top}`);
+        checkCollision();
+        function checkCollision(){
+          var overlap = !(rocketPos.right < starPos.left ||
+                rocketPos.left > starPos.right ||
+                rocketPos.bottom < starPos.top ||
+                rocketPos.top > starPos.bottom);
+
+          if (overlap === true){
+            console.log('hit');
+            this.stop();
+          }
+        }
+        // console.log(`******** STAR ${starPos.top}`);
+        // console.log(`******** ROCKET ${rocketPos.top}`);
       }
     });
 }
+
+
 
 // function collision(($('.star'), $('.rocket')) {
 //   var x1 = $('.star').offset().left;
