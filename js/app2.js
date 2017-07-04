@@ -6,31 +6,34 @@ $(init);
 function init(){
   moveRocket();
   createColumns();
+  $('button').on('click', function(){
+    startGame();
+  });
+}
+
+function startGame(){
   pickRandomColumn();
   setInterval(function() {
     createStar();
   }, 500);
-
 }
 
 function moveRocket(){
   $(document).keyup(function(e) {
     switch (e.which) {
       case 37: // left arrow key
-        $('#rocket').animate({ 'left': '-=20' }, 100);
+        $('#rocket').animate({ 'left': '-=30' }, 100);
         break;
       case 39: // right arrow key
-        $('#rocket').animate({ 'left': '+=20' }, 100);
+        $('#rocket').animate({ 'left': '+=30' }, 100);
         break;
       case 38: // right arrow key
-        $('#rocket').animate({ 'top': '-=20' }, 100);
+        $('#rocket').animate({ 'top': '-=30' }, 100);
         break;
       case 40: // right arrow key
-        $('#rocket').animate({ 'top': '+=20' }, 100);
+        $('#rocket').animate({ 'top': '+=30' }, 50);
         break;
-
     }
-    event.preventDefault();
   });
 }
 
@@ -55,6 +58,30 @@ function animateStar() {
   // move star down the page
   // 400px;
   $('.star').animate({
-    top: '+400'
-  },2000);
+    top: '+500'
+  },
+    {
+      duration: 2000,
+      step: function(now, fx){
+        console.log();
+      }
+    });
 }
+
+// function collision(($('.star'), $('.rocket')) {
+//   var x1 = $('.star').offset().left;
+//   var y1 = $('.star').offset().top;
+//   var h1 = $('.star').outerHeight(true);
+//   var w1 = $('.star').outerWidth(true);
+//   var b1 = y1 + h1;
+//   var r1 = x1 + w1;
+//   var x2 = $('.rocket').offset().left;
+//   var y2 = $('.rocket').offset().top;
+//   var h2 = $('.rocket').outerHeight(true);
+//   var w2 = $('.rocket').outerWidth(true);
+//   var b2 = y2 + h2;
+//   var r2 = x2 + w2;
+//
+//   if (b1 < y2 || y1 > b2 || r1 < x2 || x1 > r2) return false;
+//   return true;
+// }

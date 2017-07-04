@@ -1,17 +1,21 @@
 
+h1{
+  padding: 0;
+  margin: 0;
+}
 #myContainer {
-  width: 400px;
-  height: 400px;
+  width: 500px;
+  height: 500px;
   /*position: relative;*/
-  background: red;
+  background: black;
 
 }
 
 #rocket{
-  width: 20px;
-  height: 40px;
-  top: 440px;
-  left: 191px;
+  width: 35px;
+  height: 70px;
+  top: 494px;
+  left: 225px;
   background-color: gray;
   position: absolute;
 }
