@@ -4,27 +4,35 @@
 $(init);
 
 function init(){
-
+  moveRocket();
   createColumns();
   pickRandomColumn();
   setInterval(function() {
     createStar();
   }, 500);
-  // moveRocket();
+
 }
 
-// function moveRocket(){
-//   $('document').keyu(function(event) {
-//     switch (event.keycode) {
-//       case 37: // left arrow key
-//         $('#rocket').animate({ 'left': '-=100' }, 400);
-//         break;
-//       case 39: // right arrow key
-//         $('#rocket').animate({ 'left': '+=100' }, 400);
-//         break;
-//     }
-//   });
-// }
+function moveRocket(){
+  $(document).keyup(function(e) {
+    switch (e.which) {
+      case 37: // left arrow key
+        $('#rocket').animate({ 'left': '-=20' }, 100);
+        break;
+      case 39: // right arrow key
+        $('#rocket').animate({ 'left': '+=20' }, 100);
+        break;
+      case 38: // right arrow key
+        $('#rocket').animate({ 'top': '-=20' }, 100);
+        break;
+      case 40: // right arrow key
+        $('#rocket').animate({ 'top': '+=20' }, 100);
+        break;
+
+    }
+    event.preventDefault();
+  });
+}
 
 function createColumns() {
   for (var i = 0; i < 10; i++) {
