@@ -1,9 +1,14 @@
 // create multiple route divs for stars to fall down
 // rocket within conatiner div
 
+
+
+
+
 $(init);
 
 function init(){
+  // console.log(rocketPos);
   moveRocket();
   createColumns();
   $('button').on('click', function(){
@@ -22,16 +27,16 @@ function moveRocket(){
   $(document).keyup(function(e) {
     switch (e.which) {
       case 37: // left arrow key
-        $('#rocket').animate({ 'left': '-=30' }, 100);
+        $('.rocket').animate({ 'left': '-=30' }, 100);
         break;
       case 39: // right arrow key
-        $('#rocket').animate({ 'left': '+=30' }, 100);
+        $('.rocket').animate({ 'left': '+=30' }, 100);
         break;
       case 38: // right arrow key
-        $('#rocket').animate({ 'top': '-=30' }, 100);
+        $('.rocket').animate({ 'top': '-=30' }, 100);
         break;
       case 40: // right arrow key
-        $('#rocket').animate({ 'top': '+=30' }, 50);
+        $('.rocket').animate({ 'top': '+=30' }, 50);
         break;
     }
   });
@@ -64,7 +69,9 @@ function animateStar() {
       duration: 2000,
       step: function(){
         var starPos = this.getBoundingClientRect();
-        console.log(starPos);
+        var rocketPos =  document.getElementsByClassName('rocket')[0].getBoundingClientRect();
+        console.log(`******** STAR ${starPos.top}`);
+        console.log(`******** ROCKET ${rocketPos.top}`);
       }
     });
 }
