@@ -1,20 +1,37 @@
-main {
-background-color: black;
+
+#myContainer {
+  width: 400px;
+  height: 400px;
+  /*position: relative;*/
+  background: red;
+
 }
 
-
-.rocket {
-  width: 50px;
-  height: 60px;
+#rocket{
+  width: 20px;
+  height: 40px;
+  top: 440px;
+  left: 191px;
+  background-color: gray;
   position: absolute;
-  text-align: center;
-  background-color: white;
+  z-index: 1;
 }
 
-body {
-  /*margin-left: 25%;
-  margin-right: 25%;*/
-  width: 500px;
-  height: 100vh;
-  /*text-align: center;*/
+
+.column {
+  position: relative;
+  height: 100%;
+  width: 10%;
+  float: left;
+  background: black;
+}
+
+.star {
+  position: absolute;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  background: yellow;
+  left: 50%;
+  transform: translate(-50%, 0);
 }
