@@ -6,7 +6,7 @@ var rocketStop = false;
 var speed = 2000;
 var creation = 500;
 var level = 1;
-
+var gameLogic;
 
 
 $(init);
@@ -21,19 +21,31 @@ function init(){
 
 function startGame(){
   setInterval(function(){
-    speed = speed*0.9;
-    creation = creation*0.9;
+    speed = speed*0.99;
+    creation = creation*0.99;
+    // console.log(creation);
     level = level +1;
   }, 1000);
 
   pickRandomColumn();
-  const gameLogic = setInterval(function() {
-    if (hit === false){
-      createStar();
-    }else{
-      clearInterval(gameLogic);
-    }
-  }, creation);
+
+//recursive loop which calls itself over and over clearing the interval and running again until startStars is cleared due to hit == true.
+  var myFunction = function(){
+    clearInterval(gameLogic);
+    startStars();
+    gameLogic = setInterval(myFunction, creation);
+  };
+  gameLogic = setInterval(myFunction, creation);
+
+}
+
+function startStars() {
+  if (hit === false){
+    // console.log(creation);
+    createStar();
+  }else{
+    clearInterval(gameLogic);
+  }
 }
 
 
@@ -102,8 +114,6 @@ function createStar() {
 }
 
 function animateStar() {
-  // move star down the page
-  // 400px;
   $('.star').animate({
     top: '+505'
   },
@@ -112,18 +122,18 @@ function animateStar() {
       step: function(){
         var starPos = this.getBoundingClientRect();
         var rocketPos =  document.getElementsByClassName('rocket')[0].getBoundingClientRect();
-        // checkInBounds();
-        //
-        // function checkInBounds(){
-        //   if (rocketPos.right > 510 || rocketPos.bottom > 590){
-        //     gameOver();
-        //   }
-        // }
+      // checkInBounds();
+      //
+      // function checkInBounds(){
+      //   if (rocketPos.right > 510 || rocketPos.bottom > 590){
+      //     gameOver();
+      //   }
+      // }
 
-        checkCollision();
-        function checkCollision(){
-          // console.log(rocketPos);
-          var overlap = !(rocketPos.right < starPos.left ||
+      checkCollision();
+      function checkCollision(){
+        // console.log(rocketPos);
+        var overlap = !(rocketPos.right < starPos.left ||
           rocketPos.left > starPos.right ||
           rocketPos.bottom < starPos.top ||
           rocketPos.top > starPos.bottom);
@@ -135,34 +145,12 @@ function animateStar() {
         }
       }
     });
-}
+  }
 
-function gameOver(){
-  $('.star').stop();
-  rocketStop = true;
-  hit = true;
-  // $('<button/>', {
-  //   text: 'reset',
-  //   click: function () {
-  //     alert('hi');
-  //   }
-  // });
-}
+  function gameOver(){
+    $('.star').stop();
+    rocketStop = true;
+    hit = true;
+    $('.gameOver').css('visibility', 'visible');
 
-  // function collision(($('.star'), $('.rocket')) {
-  //   var x1 = $('.star').offset().left;
-  //   var y1 = $('.star').offset().top;
-  //   var h1 = $('.star').outerHeight(true);
-  //   var w1 = $('.star').outerWidth(true);
-  //   var b1 = y1 + h1;
-  //   var r1 = x1 + w1;
-  //   var x2 = $('.rocket').offset().left;
-  //   var y2 = $('.rocket').offset().top;
-  //   var h2 = $('.rocket').outerHeight(true);
-  //   var w2 = $('.rocket').outerWidth(true);
-  //   var b2 = y2 + h2;
-  //   var r2 = x2 + w2;
-  //
-  //   if (b1 < y2 || y1 > b2 || r1 < x2 || x1 > r2) return false;
-  //   return true;
-  // }
+  }
