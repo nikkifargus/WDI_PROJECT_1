@@ -3,10 +3,15 @@
 
 var hit = false;
 var rocketStop = false;
+var speed = 2000;
+var creation = 500;
+var level = 1;
+
+
+
 $(init);
 
 function init(){
-  // console.log(rocketPos);
   moveRocket();
   createColumns();
   $('#start').on('click', function(){
@@ -15,6 +20,12 @@ function init(){
 }
 
 function startGame(){
+  setInterval(function(){
+    speed = speed*0.9;
+    creation = creation*0.9;
+    level = level +1;
+  }, 1000);
+
   pickRandomColumn();
   const gameLogic = setInterval(function() {
     if (hit === false){
@@ -22,8 +33,9 @@ function startGame(){
     }else{
       clearInterval(gameLogic);
     }
-  }, 500);
+  }, creation);
 }
+
 
 function moveRocket(){
   $(document).keyup(function(e) {
@@ -96,12 +108,21 @@ function animateStar() {
     top: '+505'
   },
     {
-      duration: 2000,
+      duration: speed,
       step: function(){
         var starPos = this.getBoundingClientRect();
         var rocketPos =  document.getElementsByClassName('rocket')[0].getBoundingClientRect();
+        // checkInBounds();
+        //
+        // function checkInBounds(){
+        //   if (rocketPos.right > 510 || rocketPos.bottom > 590){
+        //     gameOver();
+        //   }
+        // }
+
         checkCollision();
         function checkCollision(){
+          // console.log(rocketPos);
           var overlap = !(rocketPos.right < starPos.left ||
           rocketPos.left > starPos.right ||
           rocketPos.bottom < starPos.top ||
@@ -109,16 +130,24 @@ function animateStar() {
 
           if (overlap === true){
             console.log('hit');
-            $('.star').stop();
-            rocketStop = true;
-            hit = true;
+            gameOver();
           }
         }
       }
     });
 }
 
-
+function gameOver(){
+  $('.star').stop();
+  rocketStop = true;
+  hit = true;
+  // $('<button/>', {
+  //   text: 'reset',
+  //   click: function () {
+  //     alert('hi');
+  //   }
+  // });
+}
 
   // function collision(($('.star'), $('.rocket')) {
   //   var x1 = $('.star').offset().left;
