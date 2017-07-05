@@ -1,22 +1,32 @@
-
+body{
+  background-color: black;
+}
 h1{
+  color: white;
   padding: 0;
   margin: 0;
+}
+h2{
+  color: white;
+}
+
+h3{
+  color: white;
 }
 #myContainer {
   width: 500px;
   height: 500px;
-  /*position: relative;*/
-  /*background-image: url(https://s-media-cache-ak0.pinimg.com/originals/37/df/0f/37df0fc8f0da4d846c2e44fb569997e9.gif);
+  position: relative;
+  background-image: url(https://media0.giphy.com/media/l3q2RgN7WUjeUUXm0/giphy.gif);
   background-repeat: no-repeat;
-  background-size: 100%;*/
+  background-size: 100%;
   background-color: black;
 }
 
 .rocket{
   width: 50px;
   height: 100px;
-  top: 494px;
+  top: 250px;
   left: 225px;
   position: absolute;
   padding: 0;
