@@ -7,17 +7,24 @@ h1{
   width: 500px;
   height: 500px;
   /*position: relative;*/
-  background: black;
-
+  /*background-image: url(https://s-media-cache-ak0.pinimg.com/originals/37/df/0f/37df0fc8f0da4d846c2e44fb569997e9.gif);
+  background-repeat: no-repeat;
+  background-size: 100%;*/
+  background-color: black;
 }
 
 .rocket{
-  width: 35px;
-  height: 70px;
+  width: 50px;
+  height: 100px;
   top: 494px;
   left: 225px;
-  background-color: gray;
   position: absolute;
+  padding: 0;
+  margin: 0;
+  border-radius: 50%;
+  border-bottom-left-radius: 15%;
+  border-bottom-right-radius: 15%;
+  /*background: gray;*/
 }
 
 
@@ -31,20 +38,13 @@ h1{
 
 .star {
   position: absolute;
-  top: 0;
-  width: 10px;
-  height: 10px;
-  background: yellow;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
   left: 50%;
   transform: translate(-50%, 0);
 }
 
-.reset {
-  position: relative;
-  width: 50px;
-  height: 50px;
-  background-color: red;
-}
 
 .gameOver{
   visibility: hidden;
@@ -57,4 +57,5 @@ h1{
   position: absolute;
   text-align: center;
   font-size: 46px;
+  z-index: 1;
 }

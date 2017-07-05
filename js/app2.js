@@ -3,7 +3,7 @@
 
 var hit = false;
 var rocketStop = false;
-var speed = 2000;
+var speed = 2500;
 var creation = 500;
 var level = 1;
 var gameLogic;
@@ -12,22 +12,30 @@ var gameLogic;
 $(init);
 
 function init(){
-  moveRocket();
+  levelUp();
   createColumns();
   $('#start').on('click', function(){
     startGame();
   });
+  $('.reset').on('click', function(){
+    location.reload();
+  });
+}
+
+function levelUp(){
+  $('h2').html('LEVEL:' + ' ' +level);
 }
 
 function startGame(){
   setInterval(function(){
-    speed = speed*0.99;
-    creation = creation*0.99;
-    // console.log(creation);
-    level = level +1;
-  }, 1000);
+    speed = speed*0.90;
+    creation = creation*0.95;
+    level = level + 1;
+    document.getElementById('level').innerHTML = 'LEVEL: '  + level;
+  }, 10000);
 
   pickRandomColumn();
+  moveRocket();
 
 //recursive loop which calls itself over and over clearing the interval and running again until startStars is cleared due to hit == true.
   var myFunction = function(){
@@ -50,13 +58,13 @@ function startStars() {
 
 
 function moveRocket(){
-  $(document).keyup(function(e) {
+  $(document).keydown(function(e) {
     switch (e.which) {
       case 37: // left arrow key
         $('.rocket').animate({
-          'left': '-=30'
+          'left': '-=15'
         },
-          { duration: 100,
+          { duration: 5,
             step: function(){
               if (rocketStop === true) $('.rocket').stop();
             }
@@ -64,9 +72,9 @@ function moveRocket(){
         break;
       case 39: // left arrow key
         $('.rocket').animate({
-          'left': '+=30'
+          'left': '+=15'
         },
-          { duration: 100,
+          { duration: 5,
             step: function(){
               if (rocketStop === true) $('.rocket').stop();
             }
@@ -74,9 +82,9 @@ function moveRocket(){
         break;
       case 38: // left arrow key
         $('.rocket').animate({
-          'top': '-=30'
+          'top': '-=15'
         },
-          { duration: 100,
+          { duration: 5,
             step: function(){
               if (rocketStop === true) $('.rocket').stop();
             }
@@ -84,9 +92,9 @@ function moveRocket(){
         break;
       case 40: // left arrow key
         $('.rocket').animate({
-          'top': '+=30'
+          'top': '+=15'
         },
-          { duration: 100,
+          { duration: 5,
             step: function(){
               if (rocketStop === true) $('.rocket').stop();
             }
@@ -109,7 +117,7 @@ function pickRandomColumn() {
 
 // create star element inside picked column
 function createStar() {
-  $('<div class="star"></div>').appendTo(pickRandomColumn());
+  $('<img class="star" src="js/planet.png"></img>').appendTo(pickRandomColumn());
   animateStar();
 }
 
@@ -122,18 +130,18 @@ function animateStar() {
       step: function(){
         var starPos = this.getBoundingClientRect();
         var rocketPos =  document.getElementsByClassName('rocket')[0].getBoundingClientRect();
-      // checkInBounds();
-      //
-      // function checkInBounds(){
-      //   if (rocketPos.right > 510 || rocketPos.bottom > 590){
-      //     gameOver();
-      //   }
-      // }
+      checkInBounds();
 
-      checkCollision();
-      function checkCollision(){
+      function checkInBounds(){
+        if (rocketPos.right > 510 || rocketPos.left < 3){
+          gameOver();
+        }
+      }
+
+        checkCollision();
+        function checkCollision(){
         // console.log(rocketPos);
-        var overlap = !(rocketPos.right < starPos.left ||
+          var overlap = !(rocketPos.right < starPos.left ||
           rocketPos.left > starPos.right ||
           rocketPos.bottom < starPos.top ||
           rocketPos.top > starPos.bottom);
@@ -145,12 +153,16 @@ function animateStar() {
         }
       }
     });
-  }
+}
 
-  function gameOver(){
-    $('.star').stop();
-    rocketStop = true;
-    hit = true;
-    $('.gameOver').css('visibility', 'visible');
-
-  }
+function gameOver(){
+  $('.star').stop();
+  rocketStop = true;
+  hit = true;
+  $('.rocket').stop();
+  $('.gameOver').css('visibility', 'visible');
+  // $('#gameOverReset').on('click', function(){
+  //   console.log('clicked');
+  //   // location.reload();
+  // });
+}
