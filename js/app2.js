@@ -3,8 +3,8 @@
 
 var hit = false;
 var rocketStop = false;
-var speed = 3000;
-var creation = 600;
+var speed = 2500;
+var creation = 700;
 var level = 1;
 var score = 0;
 var gameLogic;
@@ -36,14 +36,14 @@ function startGame(){
   setInterval(function(){
     speed = speed*0.80;
     creation = creation*0.80;
-  }, 50000);
+  }, 25000);
 
   pickRandomColumn();
   moveRocket();
 
   setInterval(function(){
     if (hit===false){
-      level = level + 0.02;
+      level = level + 0.04;
       $('#level').html(Math.floor(level));
       score = score+ 1;
       $('#score').html(score);
@@ -151,15 +151,15 @@ function animateStar() {
         var rocketPos =  document.getElementById('rocket').getBoundingClientRect();
         var containerPos = document.getElementById('myContainer').getBoundingClientRect();
 
-        // checkInBounds();
-        //
-        // function checkInBounds(){
-        //   if (rocketPos.top<containerPos.top||rocketPos.left<containerPos.left || rocketPos.right>containerPos.right || rocketPos.bottom>containerPos.bottom){
-        //     gameOver();
-        //     // console.log(containerPos.right);
-        //     // console.log(rocketPos.right);
-        //   }
-        // }
+        checkInBounds();
+
+        function checkInBounds(){
+          if (rocketPos.top<containerPos.top ||rocketPos.left<containerPos.left || rocketPos.right>containerPos.right || rocketPos.bottom>containerPos.bottom ){
+            gameOver();
+            // console.log(containerPos.right);
+            // console.log(rocketPos.right);
+          }
+        }
 
         incScore();
         function incScore(){
