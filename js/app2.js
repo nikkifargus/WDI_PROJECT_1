@@ -34,8 +34,8 @@ function init(){
 
 function startGame(){
   setInterval(function(){
-    speed = speed*0.70;
-    creation = creation*0.90;
+    speed = speed*0.80;
+    creation = creation*0.80;
   }, 50000);
 
   pickRandomColumn();
@@ -50,8 +50,13 @@ function startGame(){
     }
   }, 1000);
 
+  // setInterval(function(){
+  //   if (hit===false){
+  //     createStar();
+  //   }
+  // }, 600);
 
-//recursive loop which calls itself over and over clearing the interval and running again until startStars is cleared due to hit == true.
+// recursive loop which calls itself over and over clearing the interval and running again until startStars is cleared due to hit == true.
   var myFunction = function(){
     clearInterval(gameLogic);
     startStars();
