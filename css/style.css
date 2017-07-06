@@ -10,8 +10,14 @@ h1{
   font-size: 60px;
 }
 h2{
-  font-size: 30px;
+  font-size: 45px;
+  padding: 0;
+  margin: 0;
+  margin-top: 20px;
 }
+/*h3{
+  font-size: 45px;
+}*/
 P{
   font-size: 20px;
 }
@@ -23,26 +29,6 @@ main{
   margin: 0 auto;
   width: 1012px;
   height: 600px;
-}
-.sideBoard{
-  text-align: left;
-  width: 250px;
-  height: 500px;
-  border: solid;
-  border-width: 2px;
-  border-color: #4031ea;
-  border-radius: 8px;
-  color: white;
-  float: left;
-  margin: 0px auto;
-  /*padding: 10px;*/
-}
-
-#instructions {
-
-}
-
-#scoreBoard{
 }
 
 #myContainer {
@@ -61,37 +47,26 @@ main{
   margin: 0px auto;
 }
 
-#rocket{
-  width: 50px;
-  height: 100px;
-  top: 250px;
-  left: 225px;
-  position: absolute;
-  padding: 0;
-  margin: 0;
-  border-radius: 50%;
-  border-bottom-left-radius: 15%;
-  border-bottom-right-radius: 15%;
-  /*background: gray;*/
-}
-
-
-.column {
-  position: relative;
-  height: 100%;
-  width: 10%;
+.sideBoard{
+  width: 250px;
+  height: 500px;
+  border: solid;
+  border-width: 2px;
+  border-color: #4031ea;
+  border-radius: 8px;
+  color: white;
   float: left;
-  overflow: hidden;
+  margin: 0px auto;
+  /*padding: 10px;*/
 }
 
-.star {
-  position: absolute;
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  left: 50%;
-  transform: translate(-50%, 0);
+/*#instructions {
+text-align: left;
 }
+
+#scoreBoard{
+}*/
+
 #start, #reset{
   position: absolute;
   z-index: 2;
@@ -125,4 +100,36 @@ main{
   border-radius: 8px;
   color: white;
   line-height: 200px;
+}
+
+
+.column {
+  position: relative;
+  height: 100%;
+  width: 10%;
+  float: left;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+#rocket{
+  width: 50px;
+  height: 100px;
+  top: 250px;
+  left: 225px;
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  border-radius: 50%;
+  border-bottom-left-radius: 15%;
+  border-bottom-right-radius: 15%;
+  /*background: gray;*/
 }

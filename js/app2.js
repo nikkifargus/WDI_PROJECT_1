@@ -3,20 +3,22 @@
 
 var hit = false;
 var rocketStop = false;
-var speed = 2500;
+var speed = 3000;
 var creation = 600;
 var level = 1;
-// var score = 0;
+var score = 0;
 var gameLogic;
+var audio = new Audio('js/Space Trip.mp3');
 
 
 
 $(init);
 
 function init(){
-  levelUp();
+
   createColumns();
   $('#start').on('click', function(){
+    audio.play();
     startGame();
     $('#start').css('visibility', 'hidden');
   });
@@ -25,21 +27,25 @@ function init(){
   });
 }
 
-function levelUp(){
-  $('#level').html('LEVEL:' + ' ' +level);
-}
 
 function startGame(){
   setInterval(function(){
-    speed = speed*0.90;
-    creation = creation*0.95;
-    level = level + 0.5;
-    document.getElementById('level').innerHTML = 'LEVEL: '  + Math.floor(level);
-    // document.getElementById('score').innerHTML = 'SCORE: ' + score;
-  }, 15000);
+    speed = speed*0.70;
+    creation = creation*0.90;
+  }, 50000);
 
   pickRandomColumn();
   moveRocket();
+
+  setInterval(function(){
+    if (hit===false){
+      level = level + 0.02;
+      $('#level').html(Math.floor(level));
+      score = score+ 1;
+      $('#score').html(score);
+    }
+  }, 1000);
+
 
 //recursive loop which calls itself over and over clearing the interval and running again until startStars is cleared due to hit == true.
   var myFunction = function(){
@@ -121,6 +127,7 @@ function pickRandomColumn() {
 // create star element inside picked column
 function createStar() {
   $('<img class="star" src="js/planet.png"></img>').appendTo(pickRandomColumn());
+  // arr.push('.star');
   animateStar();
 }
 
@@ -135,17 +142,21 @@ function animateStar() {
         var rocketPos =  document.getElementById('rocket').getBoundingClientRect();
         var containerPos = document.getElementById('myContainer').getBoundingClientRect();
 
-        checkInBounds();
+        // checkInBounds();
+        //
+        // function checkInBounds(){
+        //   if (rocketPos.top<containerPos.top||rocketPos.left<containerPos.left || rocketPos.right>containerPos.right || rocketPos.bottom>containerPos.bottom){
+        //     gameOver();
+        //     // console.log(containerPos.right);
+        //     // console.log(rocketPos.right);
+        //   }
+        // }
 
-        function checkInBounds(){
-          if (rocketPos.top<containerPos.top||rocketPos.left<containerPos.left || rocketPos.right>containerPos.right || rocketPos.bottom>containerPos.bottom){
-            gameOver();
-            // console.log(containerPos.right);
-            // console.log(rocketPos.right);
-          }
+        incScore();
+        function incScore(){
+          if(starPos.bottom===containerPos.bottom)
+            console.log('bottom');
         }
-
-
 
         checkCollision();
         function checkCollision(){
@@ -171,8 +182,5 @@ function gameOver(){
   $('#rocket').stop();
   $('.gameOver').css('visibility', 'visible');
   $('#reset').css('visibility', 'visible');
-  // $('#gameOverReset').on('click', function(){
-  //   console.log('clicked');
-  //   // location.reload();
-  // });
+  audio.stop();
 }
