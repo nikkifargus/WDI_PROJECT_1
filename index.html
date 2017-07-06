@@ -1,31 +1,48 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Project 1</title>
-    <script
+<head>
+  <meta charset="utf-8">
+  <title>Project 1</title>
+  <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/app2.js" charset="utf-8"></script>
-  </head>
-  <body>
-    <h1> SPACE EVADER </h1>
-    <h2 id="level"></h2>
-    <!-- <h3 id="score"></h3> -->
-    <main>
-      <button type="button" name="button" id = "start">START</button>
-      <button type="button" name="button" class = "reset">RESET</button>
-      <div class="gameOver">
-        <p>GAME OVER</p>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Raleway" rel="stylesheet">
+  <script src="js/app2.js" charset="utf-8"></script>
+</head>
+<body>
+
+  <h1> SPACE EVADER </h1>
+
+  <main>
+    <div class="gameArea">
+      <div class="sideBoard" id="instructions">
+        <h2>INSTRUCTIONS</h2>
+        <p>
+          1) Press 'START' to begin <br>
+          2) Move the rocket using the arrow keys<br>
+          3) AVOID the planets coming towards you<br>
+          4) If you get hit by a planet GAME OVER<br>
+          5) If you leave the blue borderd game area GAME OVER <br>
+          6) The longer you stay alive the higher the level <br>
+          7) If you lose press 'RESET' to try again <br>
+        </p>
       </div>
 
       <div id="myContainer">
-      <img class="rocket" src="js/rocket.png">
-    </div>
+        <button type="button" name="button" id = "start">START</button>
+        <img id="rocket" src="js/rocket.png">
+        <div class="gameOver">GAME OVER</div>
+      </div>
 
-    </main>
-  </body>
+      <div class="sideBoard" id="scoreBoard">
+        <h2 id="level"></h2>
+        <button type="button" name="button" class = "reset">RESET</button>
+      </div>
+      </div>
+  </main>
+
+</body>
 
 </html>

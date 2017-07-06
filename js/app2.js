@@ -4,10 +4,11 @@
 var hit = false;
 var rocketStop = false;
 var speed = 2500;
-var creation = 500;
+var creation = 600;
 var level = 1;
 // var score = 0;
 var gameLogic;
+
 
 
 $(init);
@@ -24,7 +25,7 @@ function init(){
 }
 
 function levelUp(){
-  $('h2').html('LEVEL:' + ' ' +level);
+  $('#level').html('LEVEL:' + ' ' +level);
 }
 
 function startGame(){
@@ -62,42 +63,42 @@ function moveRocket(){
   $(document).keydown(function(e) {
     switch (e.which) {
       case 37: // left arrow key
-        $('.rocket').animate({
+        $('#rocket').animate({
           'left': '-=15'
         },
           { duration: 5,
             step: function(){
-              if (rocketStop === true) $('.rocket').stop();
+              if (rocketStop === true) $('#rocket').stop();
             }
           });
         break;
       case 39: // left arrow key
-        $('.rocket').animate({
+        $('#rocket').animate({
           'left': '+=15'
         },
           { duration: 5,
             step: function(){
-              if (rocketStop === true) $('.rocket').stop();
+              if (rocketStop === true) $('#rocket').stop();
             }
           });
         break;
       case 38: // left arrow key
-        $('.rocket').animate({
+        $('#rocket').animate({
           'top': '-=15'
         },
           { duration: 5,
             step: function(){
-              if (rocketStop === true) $('.rocket').stop();
+              if (rocketStop === true) $('#rocket').stop();
             }
           });
         break;
       case 40: // left arrow key
-        $('.rocket').animate({
+        $('#rocket').animate({
           'top': '+=15'
         },
           { duration: 5,
             step: function(){
-              if (rocketStop === true) $('.rocket').stop();
+              if (rocketStop === true) $('#rocket').stop();
             }
           });
         break;
@@ -130,14 +131,20 @@ function animateStar() {
       duration: speed,
       step: function(){
         var starPos = this.getBoundingClientRect();
-        var rocketPos =  document.getElementsByClassName('rocket')[0].getBoundingClientRect();
+        var rocketPos =  document.getElementById('rocket').getBoundingClientRect();
+        var containerPos = document.getElementById('myContainer').getBoundingClientRect();
+
         checkInBounds();
 
         function checkInBounds(){
-          if (rocketPos.right > 510 || rocketPos.left < 3){
+          if (rocketPos.top<containerPos.top||rocketPos.left<containerPos.left || rocketPos.right>containerPos.right || rocketPos.bottom>containerPos.bottom){
             gameOver();
+            // console.log(containerPos.right);
+            // console.log(rocketPos.right);
           }
         }
+
+
 
         checkCollision();
         function checkCollision(){
@@ -160,7 +167,7 @@ function gameOver(){
   $('.star').stop();
   rocketStop = true;
   hit = true;
-  $('.rocket').stop();
+  $('#rocket').stop();
   $('.gameOver').css('visibility', 'visible');
   // $('#gameOverReset').on('click', function(){
   //   console.log('clicked');

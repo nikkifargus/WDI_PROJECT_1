@@ -1,19 +1,52 @@
 body{
   background-color: black;
+  font-family: 'Open Sans Condensed', sans-serif;
+  text-align: center;
 }
 h1{
   color: white;
   padding: 0;
   margin: 0;
+  font-size: 60px;
 }
 h2{
+  font-size: 30px;
+}
+P{
+  font-size: 20px;
+}
+main{
+  width: 1040;
+  margin: 0 auto;
+}
+.gameArea{
+  margin: 0 auto;
+  width: 1012px;
+  height: 500px;
+}
+.sideBoard{
+  text-align: left;
+  width: 250px;
+  height: 500px;
+  border: solid;
+  border-width: 2px;
+  border-color: #4031ea;
+  border-radius: 8px;
   color: white;
+  float: left;
+  margin: 0px auto;
+  /*padding: 10px;*/
 }
 
-h3{
-  color: white;
+#instructions {
+
 }
+
+#scoreBoard{
+}
+
 #myContainer {
+  float: left;
   width: 500px;
   height: 500px;
   position: relative;
@@ -21,9 +54,14 @@ h3{
   background-repeat: no-repeat;
   background-size: 100%;
   background-color: black;
+  border: solid;
+  border-width: 2px;
+  border-color: #4031ea;
+  border-radius: 2%;
+  margin: 0px auto;
 }
 
-.rocket{
+#rocket{
   width: 50px;
   height: 100px;
   top: 250px;
@@ -48,8 +86,8 @@ h3{
 
 .star {
   position: absolute;
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   left: 50%;
   transform: translate(-50%, 0);
@@ -58,14 +96,16 @@ h3{
 
 .gameOver{
   visibility: hidden;
-  background-color: red;
-  width: 400px;
+  background-color: #000;
+  width: 100%;
   height: 200px;
   padding: 0;
-  margin-left: 50px;
-  margin-top: 136px;
+  margin:0 auto;
   position: absolute;
   text-align: center;
-  font-size: 46px;
+  font-size: 100px;
   z-index: 1;
+  border-radius: 8px;
+  color: white;
+  line-height: 200px;
 }
