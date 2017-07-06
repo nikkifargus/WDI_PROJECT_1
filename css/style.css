@@ -141,7 +141,7 @@ text-align: left;
   border-radius: 50%;
   border-bottom-left-radius: 15%;
   border-bottom-right-radius: 15%;
-  background: red;
+  /*background: red;*/
 }
 
 footer{
