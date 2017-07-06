@@ -18,8 +18,9 @@ function init(){
   createColumns();
   $('#start').on('click', function(){
     startGame();
+    $('#start').css('visibility', 'hidden');
   });
-  $('.reset').on('click', function(){
+  $('#reset').on('click', function(){
     location.reload();
   });
 }
@@ -169,6 +170,7 @@ function gameOver(){
   hit = true;
   $('#rocket').stop();
   $('.gameOver').css('visibility', 'visible');
+  $('#reset').css('visibility', 'visible');
   // $('#gameOverReset').on('click', function(){
   //   console.log('clicked');
   //   // location.reload();

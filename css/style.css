@@ -22,7 +22,7 @@ main{
 .gameArea{
   margin: 0 auto;
   width: 1012px;
-  height: 500px;
+  height: 600px;
 }
 .sideBoard{
   text-align: left;
@@ -92,8 +92,25 @@ main{
   left: 50%;
   transform: translate(-50%, 0);
 }
-
-
+#start, #reset{
+  position: absolute;
+  z-index: 2;
+  width: 250px;
+  height: 75px;
+  border: solid;
+  border-width: 2px;
+  border-color: #4031ea;
+  border-radius: 8px;
+  color: white;
+  background-color: black;
+  font-size: 20px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  margin-top: 225px;
+}
+#reset{
+  visibility: hidden;
+}
 .gameOver{
   visibility: hidden;
   background-color: #000;
