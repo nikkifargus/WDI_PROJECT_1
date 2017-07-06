@@ -20,6 +20,10 @@ function init(){
   $('#start').on('click', function(){
     audio.play();
     startGame();
+    audio.addEventListener('ended', function() {
+      this.currentTime = 0;
+      this.play();
+    }, false);
     $('#start').css('visibility', 'hidden');
   });
   $('#reset').on('click', function(){
@@ -126,7 +130,7 @@ function pickRandomColumn() {
 
 // create star element inside picked column
 function createStar() {
-  $('<img class="star" src="js/planet.png"></img>').appendTo(pickRandomColumn());
+  $('<img class="star" src="moon_PNG9.png"></img>').appendTo(pickRandomColumn());
   // arr.push('.star');
   animateStar();
 }
@@ -181,6 +185,10 @@ function gameOver(){
   hit = true;
   $('#rocket').stop();
   $('.gameOver').css('visibility', 'visible');
+  animateGameOVer();
+  function animateGameOVer() {
+    $('.gameOver').animate({top: '298px'}, 700);
+  }
   $('#reset').css('visibility', 'visible');
-  audio.stop();
+  audio.pause();
 }

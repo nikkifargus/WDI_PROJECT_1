@@ -13,13 +13,22 @@ h2{
   font-size: 45px;
   padding: 0;
   margin: 0;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 /*h3{
   font-size: 45px;
 }*/
 P{
   font-size: 20px;
+}
+
+.space{
+  text-align: center;
+  margin-top: 40px;
+  border-top: dashed;
+  border-width: 2px;
+  border-color: #4031ea;
+  padding: 15px;
 }
 main{
   width: 1040;
@@ -69,7 +78,7 @@ text-align: left;
 
 #start, #reset{
   position: absolute;
-  z-index: 2;
+  z-index: 1;
   width: 250px;
   height: 75px;
   border: solid;
@@ -81,7 +90,7 @@ text-align: left;
   font-size: 20px;
   left: 50%;
   transform: translate(-50%, 0);
-  margin-top: 225px;
+  margin-top: 223px;
 }
 #reset{
   visibility: hidden;
@@ -96,7 +105,7 @@ text-align: left;
   position: absolute;
   text-align: center;
   font-size: 100px;
-  z-index: 1;
+  z-index: 2;
   border-radius: 8px;
   color: white;
   line-height: 200px;
@@ -113,8 +122,8 @@ text-align: left;
 
 .star {
   position: absolute;
-  width: 45px;
-  height: 45px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   left: 50%;
   transform: translate(-50%, 0);
