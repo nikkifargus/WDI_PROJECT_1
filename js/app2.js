@@ -135,7 +135,7 @@ function pickRandomColumn() {
 
 // create star element inside picked column
 function createStar() {
-  $('<img class="star" src="moon_PNG9.png"></img>').appendTo(pickRandomColumn());
+  $('<img class="star" src="images_sounds/moon2_PNG9.png"></img>').appendTo(pickRandomColumn());
   // arr.push('.star');
   animateStar();
 }
