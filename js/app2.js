@@ -8,7 +8,7 @@ var creation = 700;
 var level = 1;
 var score = 0;
 var gameLogic;
-var audio = new Audio('js/Space Trip.mp3');
+var audio = new Audio('images_sounds/Space Trip.mp3');
 
 
 
