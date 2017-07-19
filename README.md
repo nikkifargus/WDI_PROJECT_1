@@ -1,11 +1,14 @@
 #Space Evader
 
+<img src="images_sounds/Screen Shot 2017-07-19 at 20.06.23.png"></img>
+
 ##Introduction
 
 This was my first project for the WDI course at General Assembly in London. It was started at the end of week 2 of the course and completed by the end of week 3. 
 
 The game I decided to make was a rocket evasion game. Where the user controls a rocket to avoid hitting asteroids as they fall down the screen.
 
+Click <a href="https://cryptic-castle-58803.herokuapp.com/">here</a> to have a go at my game.
 
 ##Objectives
 
@@ -66,4 +69,6 @@ After creating these main features of the game, I also added a scoring system an
 ##Future Improvements
 
 In the future I would like to add an ending to the game so that it is not just about getting to the highest level possible. My idea is that when a player reaches eg. level 3 then a home planet will appear at the top of the screen and the player must touch this with the rocket to win (whilst still avoiding the asteroids).
+
+<img src="images_sounds/Screen Shot 2017-07-19 at 20.06.15.png"></img>
 
