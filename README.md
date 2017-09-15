@@ -1,8 +1,8 @@
-#Space Evader
+# Space Evader
 
 <img src="images_sounds/Screen Shot 2017-07-19 at 20.06.23.png"></img>
 
-##Introduction
+## Introduction
 
 This was my first project for the WDI course at General Assembly in London. It was started at the end of week 2 of the course and completed by the end of week 3.
 
@@ -10,9 +10,9 @@ The game I decided to make was a rocket evasion game. Where the user controls a 
 
 Click <a href="https://cryptic-castle-58803.herokuapp.com/">here</a> to have a go at my game.
 
-##Objectives
+## Objectives
 
-The given objectives of the project was to build an online game using HTML5, CSS3 and ES6 Javascript, incorporating the skills learnt in the first 2 weeks of the course.
+The given objectives of the project were to build an online game using HTML5, CSS3 and ES6 Javascript, incorporating the skills learnt in the first 2 weeks of the course.
 
 As the scope of the project was relatively wide it was necessary to research what type of game I wanted to create and then decide my own objectives of how to achieve this.
 
@@ -22,8 +22,8 @@ So my chosen objectives were:
 2. Make a simple game that is fun to play for the user
 3. Make a minimalist yet attractive design
 
-##Planning
-The initial planning took place over 2 days were I had to decide what game I wanted to create, and then pseudocode in order to make sure I at least recognised the problems I would face. 
+## Planning
+The initial planning took place over 2 days were I had to decide what game I wanted to create, and then pseudocode in order to make sure I at least recognised the problems I would face.
 
 The 3 main functionalities of the game that I identified were:
 
@@ -66,7 +66,7 @@ Finally I had to use collision theory to make something happen if the rocket col
 ```          
 After creating these main features of the game, I also added a scoring system and function to increase the speed/creation frequency of items to fall down the page so that the player can level up. I also used 'getBoundingClientRect' so that I could set the boundaries of the game so the rocket had to stay in the game area. Then the rest was mainly styling to make the items falling down the page look like asteroids, attaching an image to the rocket div so it looked like a rocket and generally making the website look presentable.
 
-##Future Improvements
+## Future Improvements
 
 In the future I would like to add an ending to the game so that it is not just about getting to the highest level possible. My idea is that when a player reaches eg. level 3 then a home planet will appear at the top of the screen and the player must touch this with the rocket to win (whilst still avoiding the asteroids).
 
